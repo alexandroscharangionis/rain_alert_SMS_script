@@ -4,6 +4,7 @@ from twilio.rest import Client
 # Authentication info from Twilio:
 ACCOUNT_SID = "AC49339c118b248f6c31e783077c669551"
 AUTH_TOKEN = "ca62675bb82f970e875baec4373df27f"
+TWILIO_NUMBER = "+16155812977"
 
 # Open Weather Map API info:
 OMW_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
@@ -25,3 +26,12 @@ for hour_data in weather_data_12_hours:
     weather_condition_code = hour_data["weather"][0]["id"]
     if int(weather_condition_code) < 700:
         will_rain = True
+
+if will_rain:
+    twilio_client = Client(ACCOUNT_SID, AUTH_TOKEN)
+    message = twilio_client.messages \
+        .create(
+            body="Looks like rain/snow. Bring an umbrella!",
+            from_=TWILIO_NUMBER,
+            to='+40727718096'
+        )
