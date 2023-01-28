@@ -1,1 +1,1 @@
-# rain_alert_SMS_script
+# SMS rain alert script using OpenWeatherMap & Twilio APIs
