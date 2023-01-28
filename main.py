@@ -1,14 +1,17 @@
 import requests
 from twilio.rest import Client
+import os
 
 # Authentication info from Twilio:
 ACCOUNT_SID = "AC49339c118b248f6c31e783077c669551"
-AUTH_TOKEN = "ca62675bb82f970e875baec4373df27f"
+# Environment variable for sensitive data:
+AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 TWILIO_NUMBER = "+16155812977"
 
 # Open Weather Map API info:
 OMW_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = "69f04e4613056b159c2761a9d9e664d2"
+# Environment variable for sensitive data:
+api_key = os.environ.get("OWM_API_KEY")
 
 weather_params = {
     "lat": 44.426765,
